@@ -1,13 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Button,
-  Box,
-} from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Button, Box } from "@chakra-ui/react";
 import { useState } from "react";
 
 const FruitForm = () => {
@@ -76,7 +68,7 @@ const FruitForm = () => {
             }
           />
         </FormControl>
-        <Button type="submit">Submit </Button>
+        <Button type="submit">ORDER</Button>
       </form>
     </div>
   );
