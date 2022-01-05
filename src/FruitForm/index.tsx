@@ -1,5 +1,12 @@
 import { useParams, Link } from "react-router-dom";
-import { FormControl, FormLabel, Input, Button, Box } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Box,
+  Select,
+} from "@chakra-ui/react";
 import { useState } from "react";
 
 const FruitForm = () => {
@@ -44,26 +51,21 @@ const FruitForm = () => {
         </FormControl>
         <FormControl>
           <FormLabel htmlFor="color">color</FormLabel>
-          <Input
-            id="color"
-            type="text"
-            onChange={(e: any) =>
-              setValue({
-                ...value,
-                color: e.target.value,
-              })
-            }
-          />
+          <Select placeholder="Select option">
+            <option value="option1">red</option>
+            <option value="option2">green</option>
+            <option value="option3">yellow</option>
+          </Select>
         </FormControl>
         <FormControl>
           <FormLabel htmlFor="size">size</FormLabel>
           <Input
             id="size"
-            type="text"
+            type="number"
             onChange={(e: any) =>
               setValue({
                 ...value,
-                size: e.target.value,
+                size: parseInt(e.target.value),
               })
             }
           />
