@@ -8,10 +8,55 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import FRUITS_SETTING from "../fruitSetting";
 
 const FruitForm = () => {
   const { fruitName } = useParams();
+
   const [value, setValue] = useState<any>();
+  // @ts-ignore
+  const formSetting = FRUITS_SETTING[fruitName].form;
+  const typeToInput: any = {
+    text: (setting: any) => (
+      <Input
+        isRequired={setting.required}
+        id={setting}
+        type="text"
+        onChange={(e: any) =>
+          setValue({
+            ...value,
+            textEngraving: e.target.value,
+          })
+        }
+      />
+    ),
+    number: (setting: any) => (
+      <Input
+        isRequired={setting.required}
+        id={setting.name}
+        type="number"
+        onChange={(e: any) =>
+          setValue({
+            ...value,
+            size: parseInt(e.target.value),
+          })
+        }
+      />
+    ),
+    select: (setting: any) => {
+      return (
+        <Select placeholder="Select color">
+          {setting.options.map((v: any) => {
+            return (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            );
+          })}
+        </Select>
+      );
+    },
+  };
 
   const handleOnSubmit = async (e: any) => {
     console.log(value);
@@ -36,7 +81,17 @@ const FruitForm = () => {
       </Link>
       <Box marginTop="20px">Customize my {fruitName}</Box>
       <form onSubmit={handleOnSubmit}>
-        <FormControl>
+        {Object.keys(formSetting).map((name: any) => {
+          const setting = formSetting[name];
+          console.log(setting);
+          return (
+            <FormControl key={name}>
+              <FormLabel htmlFor={name}>{name}</FormLabel>
+              {typeToInput[setting.type](setting)}
+            </FormControl>
+          );
+        })}
+        {/* <FormControl>
           <FormLabel htmlFor="textEngraving">textEngraving</FormLabel>
           <Input
             id="textEngraving"
@@ -69,7 +124,7 @@ const FruitForm = () => {
               })
             }
           />
-        </FormControl>
+        </FormControl> */}
         <Button type="submit">ORDER</Button>
       </form>
     </div>

@@ -3,11 +3,56 @@ const FRUITS_SETTING = {
     form: {
       textEngraving: {
         require: true,
+        type: "text",
       },
       color: {
         require: true,
+        type: "select",
+        options: ["red", "yellow", "green"],
       },
-      size: {},
+      size: {
+        type: "number",
+      },
+    },
+  },
+  banana: {
+    form: {
+      textEngraving: {
+        require: true,
+        type: "text",
+      },
+      color: {
+        require: true,
+        type: "select",
+        options: ["red", "yellow", "green"],
+      },
+      size: {
+        type: "number",
+        fixed: true,
+        fixedValue: 10,
+      },
+      weight: {
+        type: "number",
+      },
+    },
+  },
+  grapes: {
+    form: {
+      textEngraving: {
+        require: true,
+        type: "text",
+      },
+      color: {
+        require: true,
+        type: "select",
+        options: ["red", "yellow", "green"],
+      },
+      size: {
+        type: "number",
+      },
+      weight: {
+        type: "number",
+      },
     },
   },
 };
