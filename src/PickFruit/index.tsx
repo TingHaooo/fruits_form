@@ -1,4 +1,3 @@
-import { Link } from "@chakra-ui/react";
 import FRUITS_SETTING from "../fruitSetting";
 
 const PickFruit = () => {
@@ -6,9 +5,9 @@ const PickFruit = () => {
     <div>
       {Object.keys(FRUITS_SETTING).map((name) => {
         return (
-          <Link key={name} to={`/fruit/${name}`}>
+          <a key={name} href={`/fruit/${name}`}>
             {name}
-          </Link>
+          </a>
         );
       })}
     </div>
